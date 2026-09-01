@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RecruitEdu</string>
+    <string name="title_activity_main">RecruitEdu</string>
+    <string name="package_name">com.college.recruitment</string>
+    <string name="custom_url_scheme">com.college.recruitment</string>
+</resources>
