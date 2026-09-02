@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+backend/__pycache__/
+backend/api/__pycache__/
+backend/recruitment/__pycache__/
+backend/db.sqlite3
+backend/media/
