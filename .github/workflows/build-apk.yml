@@ -24,11 +24,12 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install Node Dependencies
         run: npm install
+
+      - name: Configure Android SDK Location
+        run: |
+          echo "sdk.dir=/usr/local/lib/android/sdk" > android/local.properties
 
       - name: Make Gradlew Executable
         run: chmod +x android/gradlew
