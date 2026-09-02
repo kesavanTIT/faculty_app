@@ -18,11 +18,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: Setup Java JDK 21
+      - name: Setup Java JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'
+          java-version: '17'
 
       - name: Install Dependencies
         run: npm install
@@ -36,7 +36,7 @@ jobs:
       - name: Build APK with Gradle
         run: |
           cd android
-          ./gradlew assembleDebug --no-daemon --stacktrace
+          ./gradlew assembleDebug --no-daemon
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
