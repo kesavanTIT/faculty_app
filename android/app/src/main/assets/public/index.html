@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0D1528">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>RecruitEdu — Faculty Recruitment</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+
+    <!-- ══════════════════════════════════════════
+         SCREEN 1 — LOGIN
+    ══════════════════════════════════════════ -->
+    <div id="screen-login" class="screen active">
+        <div class="auth-screen">
+            <!-- Scrollable content -->
+            <div class="auth-content">
+                <!-- Brand Logo -->
+                <div class="auth-logo">
+                    <div class="auth-logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h1>RecruitEdu</h1>
+                    <p>College Faculty Recruitment Portal</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="form-login" onsubmit="handleLogin(event)">
+                    <div class="auth-input-group">
+                        <input type="email" id="login-email"
+                               placeholder="Email or mobile"
+                               required autocomplete="email">
+                    </div>
+                    <div class="auth-input-group">
+                        <input type="password" id="login-password"
+                               placeholder="Password"
+                               required autocomplete="current-password">
+                    </div>
+                    <div class="auth-remember">Remember Me</div>
+                    <button type="submit" class="auth-btn">Log In</button>
+                </form>
+
+                <p class="auth-switch">
+                    Don't Have An Account?
+                    <a href="#" onclick="switchScreen('screen-register')">Sign Up</a>
+                </p>
+            </div>
+
+            <!-- Crimson Wave Bottom -->
+            <div class="auth-wave">
+                <svg viewBox="0 0 430 220" preserveAspectRatio="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="waveG1" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%"   stop-color="#D81B60"/>
+                            <stop offset="55%"  stop-color="#8E0038"/>
+                            <stop offset="100%" stop-color="#1A1A2E"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 0 55
+                             C 60 15, 130 75, 215 42
+                             C 300 10, 370 65, 430 35
+                             L 430 220 L 0 220 Z"
+                          fill="url(#waveG1)"/>
+                    <path d="M 0 80
+                             C 70 50, 160 95, 240 68
+                             C 320 42, 390 80, 430 58
+                             L 430 220 L 0 220 Z"
+                          fill="url(#waveG1)" opacity="0.45"/>
+                </svg>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         SCREEN 2 — REGISTER
+    ══════════════════════════════════════════ -->
+    <div id="screen-register" class="screen">
+        <div class="auth-screen">
+
+            <!-- Back button -->
+            <button class="auth-back" onclick="switchScreen('screen-login')" type="button">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div class="auth-content">
+                <h2 class="auth-title">Sign Up</h2>
+
+                <form id="form-register" onsubmit="handleRegister(event)">
+                    <div class="auth-input-group">
+                        <input type="email" id="reg-email"
+                               placeholder="Email or mobile"
+                               required autocomplete="email">
+                    </div>
+                    <div class="auth-input-group">
+                        <input type="text" id="reg-name"
+                               placeholder="Full Name"
+                               required autocomplete="name">
+                    </div>
+                    <div class="auth-input-group">
+                        <input type="password" id="reg-password"
+                               placeholder="Password (min 6 chars)"
+                               required autocomplete="new-password">
+                    </div>
+                    <div class="auth-input-group">
+                        <input type="password" id="reg-confirm"
+                               placeholder="Confirm Password"
+                               required autocomplete="new-password">
+                    </div>
+                    <div class="auth-remember">Remember Me</div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+
+                <p class="auth-switch">
+                    Already have an account?
+                    <a href="#" onclick="switchScreen('screen-login')">Log In</a>
+                </p>
+            </div>
+
+            <!-- Crimson Wave Bottom -->
+            <div class="auth-wave">
+                <svg viewBox="0 0 430 220" preserveAspectRatio="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="waveG2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%"   stop-color="#D81B60"/>
+                            <stop offset="55%"  stop-color="#8E0038"/>
+                            <stop offset="100%" stop-color="#1A1A2E"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 0 45
+                             C 80 5, 170 80, 260 45
+                             C 350 10, 400 60, 430 38
+                             L 430 220 L 0 220 Z"
+                          fill="url(#waveG2)"/>
+                    <path d="M 0 75
+                             C 90 48, 180 90, 270 65
+                             C 360 40, 405 75, 430 58
+                             L 430 220 L 0 220 Z"
+                          fill="url(#waveG2)" opacity="0.45"/>
+                </svg>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         SCREEN 3 — FORGOT PASSWORD
+    ══════════════════════════════════════════ -->
+    <div id="screen-forgot" class="screen">
+        <div class="auth-screen">
+
+            <button class="auth-back" onclick="switchScreen('screen-login')" type="button">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <div class="auth-content">
+                <div class="auth-logo">
+                    <div class="auth-logo-icon">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h1 style="font-size:26px;">Recover Password</h1>
+                    <p>Enter your registered email to reset</p>
+                </div>
+
+                <form id="form-forgot" onsubmit="handleForgotPassword(event)">
+                    <div class="auth-input-group">
+                        <input type="email" id="forgot-email"
+                               placeholder="Registered Email Address"
+                               required autocomplete="email">
+                    </div>
+                    <button type="submit" class="auth-btn">Reset Password</button>
+                </form>
+
+                <p class="auth-switch">
+                    Remember your password?
+                    <a href="#" onclick="switchScreen('screen-login')">Log In</a>
+                </p>
+            </div>
+
+            <div class="auth-wave">
+                <svg viewBox="0 0 430 220" preserveAspectRatio="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="waveG3" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%"   stop-color="#D81B60"/>
+                            <stop offset="55%"  stop-color="#8E0038"/>
+                            <stop offset="100%" stop-color="#1A1A2E"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 0 60
+                             C 70 20, 150 75, 240 48
+                             C 330 22, 400 70, 430 45
+                             L 430 220 L 0 220 Z"
+                          fill="url(#waveG3)"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         SCREEN 4 — MAIN PORTAL
+    ══════════════════════════════════════════ -->
+    <div id="screen-portal" class="screen">
+
+        <!-- ── Top App Bar ── -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="header-avatar" id="header-avatar">RE</div>
+                <div class="header-greeting">
+                    <span class="greeting-sub">Welcome back</span>
+                    <span class="greeting-name" id="user-display-email">user@college.edu</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="notification-badge-wrapper" onclick="toggleNotificationsView()">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notif-count" class="badge-notif" style="display:none">0</span>
+                </div>
+                <span id="user-display-role" class="role-badge">Faculty</span>
+                <button onclick="handleLogout()" class="btn-logout" title="Log Out">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ── Notification Panel (slide-down overlay) ── -->
+        <div id="notif-dropdown" class="notif-dropdown hidden">
+            <div class="notif-header">
+                <h4>Notifications</h4>
+                <button onclick="markNotificationsAsRead()">Clear All</button>
+            </div>
+            <div id="notif-list-container" class="notif-list">
+                <p class="no-data">No new notifications</p>
+            </div>
+        </div>
+
+        <!-- ── Scrollable Content ── -->
+        <main class="content-area">
+
+            <!-- ════════ FACULTY TABS ════════ -->
+
+            <!-- Tab: View Vacancies -->
+            <div id="tab-vacancies" class="portal-tab active">
+                <div class="tab-header">
+                    <h2>Faculty Vacancies</h2>
+                    <p>Browse & apply for open positions</p>
+                </div>
+                <div class="filter-bar">
+                    <input type="text" id="search-job"
+                           placeholder="Search by title or department..."
+                           onkeyup="filterJobs()">
+                </div>
+                <div id="faculty-vacancies-list" class="grid-layout">
+                    <!-- Dynamic vacancy cards injected by JS -->
+                </div>
+            </div>
+
+            <!-- Tab: Profile Setup -->
+            <div id="tab-profile" class="portal-tab">
+                <div class="tab-header">
+                    <h2>My Profile</h2>
+                    <p>Candidate profile &amp; qualifications</p>
+                </div>
+
+                <!-- 1. VIEW MODE: Read-Only Saved Profile Summary Card -->
+                <div id="profile-view-mode" class="glass-card" style="display:none;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:12px;">
+                        <div>
+                            <h3 id="display-prof-title-name" style="font-family:'Outfit',sans-serif; font-size:18px; font-weight:700; color:var(--text-primary); margin:0;">
+                                Candidate Profile
+                            </h3>
+                            <span class="badge badge-approved" style="margin-top:4px; display:inline-block;">Active Candidate</span>
+                        </div>
+                        <button type="button" class="btn btn-primary" style="padding:8px 14px; font-size:12px;" onclick="toggleProfileEdit(true)">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+                        </button>
+                    </div>
+
+                    <div id="display-profile-details" style="display:flex; flex-direction:column; gap:14px;">
+                        <!-- Injected dynamically by JS -->
+                    </div>
+                </div>
+
+                <!-- 2. EDIT MODE: Input Form -->
+                <div id="profile-edit-mode">
+                    <form id="form-profile" onsubmit="handleSaveProfile(event)" enctype="multipart/form-data">
+
+                        <!-- Personal Details -->
+                        <div class="glass-card profile-form-card">
+                            <h3><i class="fa-solid fa-user"></i> Personal Details</h3>
+                            <div class="form-grid">
+                                <div class="input-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="prof-name" placeholder="Dr. John Doe" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" id="prof-phone" placeholder="+91 XXXXX XXXXX" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Date of Birth</label>
+                                    <input type="date" id="prof-dob" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Gender</label>
+                                    <select id="prof-gender" required>
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education -->
+                        <div class="glass-card profile-form-card">
+                            <h3><i class="fa-solid fa-book"></i> Educational Qualification</h3>
+                            <div class="input-group">
+                                <label>Qualifications &amp; Degrees</label>
+                                <textarea id="prof-qualification" rows="3"
+                                    placeholder="e.g. Ph.D. in Computer Science (IIT Madras), M.Tech in IT..." required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Experience & Skills -->
+                        <div class="glass-card profile-form-card">
+                            <h3><i class="fa-solid fa-briefcase"></i> Experience &amp; Skills</h3>
+                            <div class="form-grid-2">
+                                <div class="input-group">
+                                    <label>Work Experience</label>
+                                    <textarea id="prof-experience" rows="3"
+                                        placeholder="e.g. 5 Years Assistant Professor at Anna University..." required></textarea>
+                                </div>
+                                <div class="input-group">
+                                    <label>Technical / Core Skills</label>
+                                    <textarea id="prof-skills" rows="3"
+                                        placeholder="e.g. Python, Machine Learning, Research Writing..." required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resume Upload -->
+                        <div class="glass-card profile-form-card">
+                            <h3><i class="fa-solid fa-file-arrow-up"></i> Upload Resume</h3>
+                            <div class="input-group">
+                                <label>Resume File (PDF / DOCX)</label>
+                                <input type="file" id="prof-resume" accept=".pdf,.doc,.docx">
+                                <span id="resume-download-link" class="resume-link"></span>
+                            </div>
+                            <div class="form-actions" style="display:flex; gap:10px; margin-top:14px;">
+                                <button type="button" id="btn-cancel-profile-edit" class="btn" style="flex:1; background:rgba(255,255,255,0.08); color:var(--text-primary); display:none;" onclick="toggleProfileEdit(false)">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-success" style="flex:2;">
+                                    Save Profile &nbsp;<i class="fa-solid fa-floppy-disk"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+
+            <!-- Tab: My Applications -->
+            <div id="tab-my-applications" class="portal-tab">
+                <div class="tab-header">
+                    <h2>My Applications</h2>
+                    <p>Track your recruitment status</p>
+                </div>
+                <div id="applied-jobs-list" class="mobile-list-container">
+                    <!-- Dynamic applicant cards -->
+                </div>
+            </div>
+
+
+            <!-- ════════ ADMIN TABS ════════ -->
+
+            <!-- Tab: Admin Dashboard -->
+            <div id="tab-admin-dashboard" class="portal-tab">
+                <div class="tab-header">
+                    <h2>Dashboard</h2>
+                    <p>Real-time recruitment statistics</p>
+                </div>
+
+                <!-- Stat counters -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-blue">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="stat-vacancies">0</h4>
+                            <p>Vacancies</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-yellow">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="stat-applications">0</h4>
+                            <p>Applications</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-purple">
+                            <i class="fa-solid fa-user-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="stat-shortlisted">0</h4>
+                            <p>Shortlisted</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon bg-green">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="stat-selected">0</h4>
+                            <p>Selected</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Welcome info card -->
+                <div class="glass-card admin-welcome-card">
+                    <h3>Welcome, Academic Recruiter!</h3>
+                    <p>Use the bottom navigation to post new job vacancies, review applications, shortlist candidates, schedule interviews, and generate selection reports.</p>
+                </div>
+            </div>
+
+            <!-- Tab: Post Jobs (Admin) -->
+            <div id="tab-admin-vacancies" class="portal-tab">
+                <div class="tab-header">
+                    <h2>Job Management</h2>
+                    <p>Create new faculty openings &amp; manage active listings</p>
+                </div>
+
+                <!-- Segmented Sub-Tabs Bar -->
+                <div class="job-subtabs">
+                    <button type="button" id="subtab-btn-post" class="job-subtab-btn active" onclick="switchJobSubTab('post')">
+                        <i class="fa-solid fa-plus-circle"></i> Create Opening
+                    </button>
+                    <button type="button" id="subtab-btn-list" class="job-subtab-btn" onclick="switchJobSubTab('list')">
+                        <i class="fa-solid fa-list-check"></i> Active Openings
+                    </button>
+                </div>
+
+                <!-- View 1: Post New Vacancy Form -->
+                <div id="job-view-post" class="job-subview active">
+                    <div class="glass-card">
+                        <h3 style="font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; color:var(--text-primary); margin-bottom:14px;">
+                            Post New Job Opening
+                        </h3>
+                        <form id="form-post-job" onsubmit="handlePostJob(event)">
+                            <div class="input-group">
+                                <label>Job Title</label>
+                                <input type="text" id="job-title" placeholder="e.g. Assistant Professor" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Department</label>
+                                <input type="text" id="job-dept" placeholder="e.g. Information Technology" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Required Qualification</label>
+                                <input type="text" id="job-qualification" placeholder="e.g. Ph.D. in CSE / IT" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Required Experience</label>
+                                <input type="text" id="job-experience" placeholder="e.g. Min 3 Years Teaching" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Job Description</label>
+                                <textarea id="job-desc" rows="4"
+                                    placeholder="Describe responsibilities, syllabus, requirements..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px;">
+                                Publish Opening &nbsp;<i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- View 2: Active Vacancies List -->
+                <div id="job-view-list" class="job-subview hidden">
+                    <div id="admin-vacancies-list" class="mobile-list-container">
+                        <!-- Dynamic vacancy cards -->
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Tab: Applications (Admin) -->
+            <div id="tab-admin-applications" class="portal-tab">
+                <div class="tab-header">
+                    <h2>Applications</h2>
+                    <p>Verify and shortlist applicants</p>
+                </div>
+                <div id="admin-applications-list" class="mobile-list-container">
+                    <!-- Dynamic applicant cards -->
+                </div>
+            </div>
+
+            <!-- Tab: Reports (Admin) -->
+            <div id="tab-admin-reports" class="portal-tab">
+                <div class="tab-header hide-on-print">
+                    <h2>Recruitment Reports</h2>
+                    <p>Selected candidate overview</p>
+                </div>
+
+                <!-- Screen mode: Mobile cards view -->
+                <div id="report-cards-list" class="mobile-list-container hide-on-print">
+                    <!-- Dynamic report cards -->
+                </div>
+
+                <!-- Print mode: Official print table -->
+                <div class="glass-card print-report-card print-only-container">
+                    <div class="report-header">
+                        <h2>ACADEMIC RECRUITMENT REPORT</h2>
+                        <p id="report-date-time">Generated on: —</p>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="report-table">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Faculty Name</th>
+                                    <th>Department</th>
+                                    <th>Email / Phone</th>
+                                    <th>Qualification</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="report-table-body">
+                                <!-- Dynamic rows for printing -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="report-signatures">
+                        <div class="sig-block">
+                            <p>__________________________</p>
+                            <p>Recruitment Coordinator</p>
+                        </div>
+                        <div class="sig-block">
+                            <p>__________________________</p>
+                            <p>Principal / HR Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </main>
+
+        <!-- ── Bottom Navigation Bar ── -->
+        <nav class="bottom-nav">
+
+            <!-- Faculty Navigation -->
+            <div class="nav-section faculty-only">
+                <a class="nav-item active"
+                   onclick="switchPortalTab(event, 'tab-vacancies')">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Jobs</span>
+                </a>
+                <a class="nav-item"
+                   onclick="switchPortalTab(event, 'tab-profile')">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>Profile</span>
+                </a>
+                <a class="nav-item"
+                   onclick="switchPortalTab(event, 'tab-my-applications')">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Applied</span>
+                </a>
+            </div>
+
+            <!-- Admin Navigation -->
+            <div class="nav-section admin-only">
+                <a class="nav-item active"
+                   onclick="switchPortalTab(event, 'tab-admin-dashboard')">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-item"
+                   onclick="switchPortalTab(event, 'tab-admin-vacancies')">
+                    <i class="fa-solid fa-folder-plus"></i>
+                    <span>Post Jobs</span>
+                </a>
+                <a class="nav-item"
+                   onclick="switchPortalTab(event, 'tab-admin-applications')">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Applicants</span>
+                </a>
+                <a class="nav-item"
+                   onclick="switchPortalTab(event, 'tab-admin-reports')">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+        </nav>
+
+    </div><!-- end #screen-portal -->
+
+
+    <!-- ══════════════════════════════════════════
+         MODALS — BOTTOM SHEETS
+    ══════════════════════════════════════════ -->
+
+    <!-- Candidate Profile Detail Sheet -->
+    <div id="modal-candidate-detail" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeModal('modal-candidate-detail')"></div>
+        <div class="modal-content">
+            <div class="sheet-handle"></div>
+            <div class="modal-header">
+                <h3>Applicant Profile</h3>
+                <button class="btn-close" onclick="closeModal('modal-candidate-detail')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-candidate-body">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Interview Sheet -->
+    <div id="modal-schedule-interview" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeModal('modal-schedule-interview')"></div>
+        <div class="modal-content">
+            <div class="sheet-handle"></div>
+            <div class="modal-header">
+                <h3>Schedule Interview</h3>
+                <button class="btn-close" onclick="closeModal('modal-schedule-interview')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="form-schedule-interview" onsubmit="handleScheduleInterview(event)">
+                <input type="hidden" id="sch-app-id">
+                <div class="modal-body">
+                    <div class="input-group">
+                        <label>Interview Date &amp; Time</label>
+                        <input type="datetime-local" id="sch-date-time" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Interview Mode</label>
+                        <select id="sch-mode" required onchange="toggleInterviewMode(this.value)">
+                            <option value="offline">Offline (Face to Face)</option>
+                            <option value="online">Online (Video Conference)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label id="lbl-sch-details">Venue / Location</label>
+                        <input type="text" id="sch-details"
+                               placeholder="e.g. Block A, Seminar Room 102" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-block">
+                        Schedule Interview &nbsp;<i class="fa-solid fa-calendar-check"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div><!-- end #modal-schedule-interview -->
+
+    <!-- View Vacancy Details Sheet -->
+    <div id="modal-view-vacancy" class="modal hidden">
+
+        <div class="modal-backdrop" onclick="closeModal('modal-view-vacancy')"></div>
+        <div class="modal-content">
+            <div class="sheet-handle"></div>
+            <div class="modal-header">
+                <h3>Vacancy Details</h3>
+                <button class="btn-close" onclick="closeModal('modal-view-vacancy')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-view-vacancy-body">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Vacancy Sheet -->
+    <div id="modal-edit-vacancy" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeModal('modal-edit-vacancy')"></div>
+        <div class="modal-content">
+            <div class="sheet-handle"></div>
+            <div class="modal-header">
+                <h3>Edit Job Vacancy</h3>
+                <button class="btn-close" onclick="closeModal('modal-edit-vacancy')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="form-edit-job" onsubmit="handleUpdateVacancy(event)">
+                <input type="hidden" id="edit-job-id">
+                <div class="modal-body">
+                    <div class="input-group">
+                        <label>Job Title</label>
+                        <input type="text" id="edit-job-title" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Department</label>
+                        <input type="text" id="edit-job-dept" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Required Qualification</label>
+                        <input type="text" id="edit-job-qualification" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Required Experience</label>
+                        <input type="text" id="edit-job-experience" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Job Description</label>
+                        <textarea id="edit-job-desc" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Save Changes &nbsp;<i class="fa-solid fa-floppy-disk"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div><!-- end #modal-edit-vacancy -->
+
+    <!-- Native Mobile Confirm Sheet -->
+    <div id="modal-confirm-action" class="modal hidden">
+
+        <div class="modal-backdrop" onclick="closeModal('modal-confirm-action')"></div>
+        <div class="modal-content" style="text-align:center;">
+            <div class="sheet-handle"></div>
+            <div style="font-size:36px; color:var(--crimson); margin:12px 0 6px 0;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 id="confirm-modal-title" style="font-family:'Outfit',sans-serif; font-size:18px; font-weight:700; color:var(--text-primary); margin-bottom:6px;">
+                Confirm Action
+            </h3>
+            <p id="confirm-modal-message" style="font-size:13px; color:var(--text-secondary); margin-bottom:20px; line-height:1.5;">
+                Are you sure you want to perform this action?
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:6px;">
+                <button type="button" class="btn" style="flex:1; background:rgba(255,255,255,0.08); color:var(--text-primary);" onclick="closeModal('modal-confirm-action')">
+                    Cancel
+                </button>
+                <button type="button" id="confirm-modal-btn-yes" class="btn btn-danger" style="flex:1;">
+                    Yes, Proceed
+                </button>
+            </div>
+        </div>
+    </div><!-- end #modal-confirm-action -->
+
+    <!-- Confirm Easy Apply Sheet Modal -->
+    <div id="modal-confirm-apply" class="modal hidden">
+
+        <div class="modal-backdrop" onclick="closeModal('modal-confirm-apply')"></div>
+        <div class="modal-content">
+            <div class="sheet-handle"></div>
+            <div class="modal-header">
+                <h3>Review &amp; Submit Application</h3>
+                <button class="btn-close" onclick="closeModal('modal-confirm-apply')">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-apply-body">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container"></div>
+
+
+
+
+</div><!-- end #app -->
+
+<!-- App Script -->
+<script src="js/app.js?v=19.0"></script>
+</body>
+</html>

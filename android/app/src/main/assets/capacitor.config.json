@@ -1,0 +1,10 @@
+{
+	"appId": "com.college.recruitment",
+	"appName": "RecruitEdu",
+	"webDir": "frontend/www",
+	"bundledWebRuntime": false,
+	"server": {
+		"androidScheme": "http",
+		"cleartext": true
+	}
+}
